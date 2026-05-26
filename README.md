@@ -5,10 +5,10 @@ A clean, minimal flashlight app for Android built with Java and the Camera2 API.
 ## 📱 Screenshots
 
 ### OFF State
-![OFF State](Pictures/FlashLight Off.jpeg)
+![OFF State](Pictures/FlashLight%20Off.jpeg)
 
 ### ON State
-![ON State](Pictures/FlashLight On.jpeg)
+![ON State](Pictures/FlashLight%20On.jpeg)
 
 Dark circular button with dim power icon  
 Cyan-glowing button with pulse rings
