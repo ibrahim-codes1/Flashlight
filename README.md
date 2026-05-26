@@ -189,7 +189,7 @@ The UI uses a dark space theme (#080810 background) with cyan accents (#00DCFF).
 
 ## 🧑‍💻 Author
 
-**Ibrahim Sheikh**
+**Muhammad Ibrahim**
 
 GitHub: https://github.com/ibrahim-codes1  
 LinkedIn: www.linkedin.com/in/muhammad-ibrahim-89b474288
