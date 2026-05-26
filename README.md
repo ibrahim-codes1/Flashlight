@@ -1,154 +1,173 @@
-🔦 Torch — Flashlight App for Android
+# 🔦 Flashlight
 
-A clean, minimal flashlight app for Android built with Java and the Camera2 API.
-Features a creative dark-themed UI with a circular power button, pulse ring animations, brightness slider, and automatic torch cleanup on app exit.
+A clean and minimal flashlight app for Android built using Java and the Camera2 API.  
+The app features a modern dark-themed UI with a glowing circular power button, pulse ring animations, brightness slider, and automatic torch cleanup when the app closes.
 
-📱 Screenshots
-OFF State
+---
 
-ON State
+## 📱 Screenshots
 
-✨ Features
-One-tap power button — toggles the flashlight instantly
-Pulse ring animations — visual feedback when torch is active
-Brightness slider — adjust torch intensity (enabled only when ON)
-Auto-off on exit — torch safely turns off when you leave the app
-No-flash device detection — graceful message if device has no flash
-Minimal permissions — only camera permission required
-🛠️ Tech Stack
-Layer	Technology
-Language	Java
-Min SDK	API 21 (Android 5.0 Lollipop)
-Target SDK	API 34 (Android 14)
-Layout	ConstraintLayout
-Camera API	Camera2 (CameraManager)
-UI	Custom XML drawables + Vector icons
-📂 Project Structure
+<p align="center">
+  <img src="Pictures/FlashLight Off.jpeg" width="250" alt="OFF State"/>
+  <img src="Pictures/FlashLight On.jpeg" width="250" alt="ON State"/>
+</p>
+
+---
+
+## ✨ Features
+
+- One-tap power button to instantly toggle flashlight
+- Smooth pulse ring animations when torch is active
+- Brightness slider support
+- Automatic flashlight turn OFF on app exit
+- Detects devices without flashlight support
+- Minimal and clean UI design
+- Lightweight and fast performance
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Usage |
+|---|---|
+| Java | App development |
+| Camera2 API | Flashlight control |
+| ConstraintLayout | UI Layout |
+| XML Drawables | Custom UI design |
+| Android Studio | Development IDE |
+
+---
+
+## 📂 Project Structure
+
+```text
 Flashlight/
+│
 ├── Pictures/
-│   ├── off_state.png
-│   └── on_state.png
+│   ├── off_state.jpeg
+│   └── on_state.jpeg
 │
 ├── app/
-│   ├── src/
-│   │   └── main/
-│   │       ├── java/com/example/flashlight/
-│   │       │   └── MainActivity.java
-│   │       │
-│   │       ├── res/
-│   │       │   ├── layout/
-│   │       │   │   └── activity_main.xml
-│   │       │   │
-│   │       │   ├── drawable/
-│   │       │   │   ├── ic_power_off.xml
-│   │       │   │   ├── ic_power_on.xml
-│   │       │   │   ├── btn_off.xml
-│   │       │   │   ├── btn_on.xml
-│   │       │   │   ├── btn_ripple.xml
-│   │       │   │   └── ring_deco.xml
-│   │       │   │
-│   │       │   ├── color/
-│   │       │   │   └── btn_text_selector.xml
-│   │       │   │
-│   │       │   └── values/
-│   │       │       ├── colors.xml
-│   │       │       └── strings.xml
-│   │       │
-│   │       └── AndroidManifest.xml
+│   ├── src/main/
+│   │   ├── java/com/example/flashlight/
+│   │   │   └── MainActivity.java
+│   │   │
+│   │   ├── res/
+│   │   │   ├── layout/
+│   │   │   ├── drawable/
+│   │   │   ├── values/
+│   │   │   └── mipmap/
+│   │   │
+│   │   └── AndroidManifest.xml
 │   │
 │   └── build.gradle
 │
 └── README.md
-🚀 Getting Started
-Prerequisites
-Android Studio Hedgehog (2023.1.1) or newer
-Android device with a flash unit
-Java 8 or higher
-📥 Installation
-1. Clone the repository
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Android Studio Hedgehog or newer
+- Android device with flashlight support
+- Java 8+
+
+---
+
+## 📥 Installation
+
+### Clone the Repository
+
+```bash
 git clone https://github.com/ibrahim-codes1/Flashlight.git
 cd Flashlight
-2. Open in Android Studio
-Go to File → Open
-Select the project folder
-Wait for Gradle to sync
-3. Run the app
-Connect a physical Android device
-(emulators usually don't support flashlight hardware)
-Click the green Run button or press:
-Shift + F10
-🔐 Permissions
+```
 
-Declared in AndroidManifest.xml:
+### Open in Android Studio
 
+1. Open Android Studio
+2. Click **File → Open**
+3. Select the project folder
+4. Wait for Gradle sync
+
+### Run the App
+
+- Connect a physical Android device
+- Press **Shift + F10** or click the **Run** button
+
+---
+
+## 🔐 Permissions
+
+```xml
 <uses-permission android:name="android.permission.CAMERA" />
 
 <uses-feature
     android:name="android.hardware.camera.flash"
     android:required="true" />
+```
 
-Note: The CAMERA permission is required by CameraManager to access the torch.
-No photos or videos are ever captured.
+---
 
-💡 How It Works
-Core Logic — MainActivity.java
-App Launch
-    │
-    ├─► Check: does device have flash?
-    │       └─ No  → show Toast, disable button
-    │       └─ Yes → get cameraId from CameraManager
-    │
-    └─► User taps ToggleButton
-            ├─ ON  → setTorchMode(cameraId, true)
-            └─ OFF → setTorchMode(cameraId, false)
+## 💡 Core Flashlight Logic
 
-App goes to background (onStop)
-    └─► setTorchMode(cameraId, false)
-Key Method
+```java
 cameraManager.setTorchMode(cameraId, isOn);
+```
 
-This single Camera2 API call handles everything — no SurfaceTexture or camera session needed.
+The Camera2 API directly controls the device flashlight without opening a camera preview session.
 
-🎨 UI Design
+---
 
-The app uses a dark futuristic theme with cyan highlights.
+## 🎨 UI Theme
 
-Element	OFF State	ON State
-Background	#080810	#080810
-Button Fill	#0D0D1A	#001A22
-Button Border	#1E1E3A	#00DCFF
-Power Icon	#2A2A5A	#00DCFF
-Status Text	Gray	Cyan
-Pulse Rings	Hidden	Animated
-⚠️ Known Limitations
-Issue	Explanation
-No emulator support	Android emulators don't have real flashlight hardware
-Brightness control	Most devices only support ON/OFF torch mode
-Single camera usage	App currently uses the default rear camera
-🔮 Planned Features
- Strobe / flicker mode
- SOS Morse code mode
- Home screen widget
- Lock screen shortcut
- Timer auto-off
- Advanced brightness control
-🧑‍💻 Author
+| Element | Color |
+|---|---|
+| Background | `#080810` |
+| Active Glow | `#00DCFF` |
+| Inactive Button | `#0D0D1A` |
+| Active Button | `#001A22` |
 
-Muhammad Ibrahim 
+---
 
-GitHub: ibrahim-codes1 GitHub
-📄 License
+## ⚠️ Known Limitations
 
-MIT License
+- Android emulators usually do not support flashlight hardware
+- Some devices only support ON/OFF brightness
+- Uses the default rear camera flashlight
 
-Copyright (c) 2025 Ibrahim Sheikh
+---
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files to deal in the Software
-without restriction, including without limitation the rights to use, copy,
-modify, merge, publish, distribute, sublicense, and/or sell copies.
+## 🔮 Future Improvements
 
-🙏 Acknowledgements
-Android Camera2 API Documentation
-Material Design Guidelines
-Built as part of a mobile app development learning journey 🚀
+- Strobe mode
+- SOS mode
+- Lock screen shortcut
+- Home screen widget
+- Timer auto OFF
+- Advanced brightness control
+
+---
+
+## 🧑‍💻 Author
+
+**Muhammad Ibrahim**
+
+GitHub: https://github.com/ibrahim-codes1
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🙏 Acknowledgements
+
+- Android Camera2 API
+- Material Design Guidelines
+- Android Developers Documentation
