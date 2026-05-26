@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#001A22"/>
+            <stroke android:width="2.5dp" android:color="#00DCFF"/>
+            <size android:width="180dp" android:height="180dp"/>
+
+        </shape>
+    </item>
+
+    <item
+        android:top="58dp"
+        android:bottom="58dp"
+        android:left="58dp"
+        android:right="58dp"
+        android:drawable="@drawable/ic_power_on" />
+
+</layer-list>
